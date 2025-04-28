@@ -3,7 +3,6 @@ import ReactDOM, {createRoot} from 'react-dom/client';
 import TodoHeader from './components/header/header';
 import TodoList from './components/task-list/todo-list'
 import Footer from './components/footer/footer'
-import { render } from '@testing-library/react';
 import './components/common/common.css'
 
 const App = () =>  {
