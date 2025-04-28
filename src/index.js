@@ -1,17 +1,29 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM, {createRoot} from 'react-dom/client';
+import TodoHeader from './components/header/header';
+import TodoList from './components/task-list/todo-list'
+import Footer from './components/footer/footer'
+import { render } from '@testing-library/react';
+import './components/common/common.css'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const App = () =>  {
+    const todoData = [
+        {className: 'completed', description: 'Completed task', created: 'created 17 seconds ago'},
+        {className: 'editing', description: 'Editing task', created: 'created 5 minutes ago'},
+        {description: 'Active task', created: 'created 5 minutes ago'}
+    ]
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+    return (
+        <section className='todoapp'>
+            <TodoHeader />
+            <section className='main'>
+                <TodoList todoData={todoData} />
+                <Footer />
+            </section>
+        </section>
+    )
+}
+
+const root = createRoot(document.getElementById('root'))
+
+root.render(<App />)
